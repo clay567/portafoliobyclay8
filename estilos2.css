@@ -1,0 +1,190 @@
+/*
+asegúrese de que todos los elementos HTML tengan la propiedad 
+de tamaño de caja establecida en border-box
+*/
+*{
+	box-sizing: border-box;
+}
+/*
+Las columnas dentro de una fila flotan hacia la izquierda y, 
+por lo tanto, se sacan del flujo de la página y 
+otros elementos se colocarán como si las columnas no existieran. 
+Para evitar esto, agregaremos un estilo que borre el flujo:
+*/
+.row::after{
+	content: "";
+	clear: both;
+	display: block;/*table*/
+}
+/*
+Todas estas columnas deben estar flotando a la izquierda y 
+tienen un relleno de 15 píxeles: 
+*/
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+div#firstrow{
+	/*background-color: tomato;
+	border: solid black; */
+}
+div#tresceldas{
+	/*border:solid gray;
+	background-color: lightgreen;*/
+	/*height:100%;*//*no trabaje con porcentajes en alturas agalo en pixeles*/
+}
+div#nueveceldas{
+	/*border:solid gray;
+	background-color: skyblue;*/
+	/*height: 50%;*/
+}
+
+div#secondrow{
+	/*background-color: lightblue;*/
+	/*border: solid red;*/
+}
+div#seisceldas{
+	/*background-color: brown;*/
+	/*height:300px;*//*siempre especifique los mismos valores en altura para cada celda*/
+}
+div#cuatroceldas{
+	/*background-color: pink;
+	height: 300px;*/
+}
+div#dosceldas{
+	/*background-color: lightyellow;
+	height: 300px;*//*aqui lo correcto seria 300px*/
+}
+/*en ancho siempre se expresa en % y las alturas recuerde en pixeles...!*/
+
+/*
+queremos utilizar una vista de cuadrícula receptiva con 12 columnas 
+para tener más control sobre la página web. 
+Primero debemos calcular el porcentaje para una columna: 
+100% / 12 columnas = 8.33%.
+*/
+.col-1{width: 8.33%;}
+.col-2{width: 16.66%;}
+.col-3{width: 25%;}
+.col-4{width: 33.33%;}
+.col-5{width: 41.66%;}
+.col-6{width: 50%;}
+.col-7{width: 58.33%;}
+.col-8{width: 66.66%;}
+.col-9{width: 75%;}
+.col-10{width: 83.33%;}
+.col-11{width: 91.66%;}
+.col-12{width: 100%;}
+
+
+/*
+ Use una consulta de medios para agregar un punto de interrupción 
+ a 768px: Cuando la pantalla (ventana del navegador) 
+ se vuelve más pequeña que 768px, cada columna debe tener un ancho 
+ del 100%:
+*/
+/*
+En lugar de cambiar los estilos cuando el ancho es inferior a 768px, 
+deberíamos cambiar el diseño cuando el ancho supere los 768px. 
+Esto hará que nuestro diseño Mobile First:
+*/
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+.fakeimg {
+	/*border:solid blue;*/
+      height: 400px;
+      background: #aaa;
+  }
+.piePagina{
+	/*border:solid blue;*/
+	padding:15px;
+	font-weight: bolder;
+	font-size: 1em;
+	background-color: #555;
+	text-shadow: 0 5px 15px gray;
+	height: 200px;
+	position: relative;
+}
+
+footer{
+	/*width: 60%;*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-transform: uppercase;
+}
+.cabecera{
+	background-color: #555;
+	padding: 15px;
+	text-align: center;
+	color:whitesmoke;
+}
+
+.overlay{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	background-color: #555;
+	opacity: 0;
+}
+.contenedor:hover .overlay{
+	opacity: 0.5;
+}
+
+.texto{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50% ,-50%);
+	background-color: whitesmoke;
+	padding: 10px;
+	font-weight: bolder;
+}
+
+.modal{
+	/*border:solid red;*/	
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background:rgba(0,0,0,0.9);
+	opacity: 1;
+	display: none;
+	z-index: 1;
+}
+
+#contenido{
+	/*border: solid gold;*/
+	width: 80%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
